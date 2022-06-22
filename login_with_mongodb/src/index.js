@@ -1,6 +1,7 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
 import mongodb from 'mongodb';
+import route  from './routes/index.js';
 
 const MongoClient = mongodb.MongoClient;
 const url = 'mongodb://localhost:27017/DaoDucDev'
@@ -19,8 +20,6 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './src/views');
 
-app.get('/', (req, res) => {
-    res.render('home');
-});
+route(app);
 
 app.listen(3000);
