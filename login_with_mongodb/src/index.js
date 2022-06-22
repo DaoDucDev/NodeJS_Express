@@ -2,17 +2,9 @@ import express from 'express';
 import { engine } from 'express-handlebars';
 import mongodb from 'mongodb';
 import route  from './routes/index.js';
+import db from './config/db/index.js'
 
-const MongoClient = mongodb.MongoClient;
-const url = 'mongodb://localhost:27017/DaoDucDev'
-
-MongoClient.connect(url, function(err, db) {
-    if (err) {
-        console.log('Có lỗi xảy ra');
-    } else {
-        console.log('Kết nối thành công!');
-    }
-})
+db.connect();
 
 const app = express();
 
